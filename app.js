@@ -100,18 +100,22 @@ var server = http.createServer(function(req, res){
           break;           
 
         default: 
-          if (urlParts[3]) {
-            var mod = parseInt(urlParts[2]) % parseInt(urlParts[3]);
+          if (urlParts[2]) {
+            var mod = parseInt(urlParts[1]) % parseInt(urlParts[2]);
             res.end(mod + '\n'); 
           } else {
-            if (urlParts[2]) {
-              res.end(urlParts[2] + '\n');
+            if (urlParts[1]) {
+              res.end(urlParts[1] + '\n');
             } else {
               res.end('No math'); 
             }
           }
 
-      }
+      } // end of math start of sentence 
+    // case 'sentence': 
+
+
+
       break; 
     default: 
     res.end('nothing');
