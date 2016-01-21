@@ -9,6 +9,7 @@ var main = {
     $('#getTime').click(main.getTime);
     $('#getUrl').click(main.getUrl);
     $('#getMath').click(main.getMath);
+    $('#getAdd').click(main.getAdd);
   },
   getTime: function(){
     $.get('http://localhost:'+port+'/time', function(data){
@@ -19,19 +20,25 @@ var main = {
   getMath: function(){
     main.url = $('#math').val(); 
     main.slash(); 
-    main.slash2();
+    // main.slash2();
     $.get('http://localhost:'+port+'/math'+main.url, function(data){
       console.log(data);
       $('#solution').text(data); 
     })
   },
   getAdd: function(){
-
+    main.url = $('#add').val(); 
+    main.slash(); 
+    // main.slash2();
+    $.get('http://localhost:'+port+'/math/add'+main.url, function(data){
+      $('#solution').text(data); 
+    })
   },
   getUrl: function(){
     main.url = $('#url').val();
     main.slash(); 
     $.get('http://localhost:'+port+ main.url , function(data){
+      console.log(data);
       $('#resUrl').text(data); 
     })
   }, 
@@ -45,7 +52,15 @@ var main = {
   slash2: function(){
     var array = main.url.split(/[\W | \, | \_, | \-]/);
     main.url = array.join('/');
+  }, 
+
+  examples: {
+    square: '/math/square/5', 
+    add: '/math/add/3/3/3',
+    sentence: '/sentence/A%20Sentence%20here',
+    gravatar: '/gravatar/samer.buna@gmail.com'
   }
+
 
 };
 
