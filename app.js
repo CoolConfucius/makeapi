@@ -3,8 +3,7 @@
 var http = require('http');  
 var math = require('./math'); 
 var sentence = require('./sentence');
-// var md5 = require('md5'); 
-// var _ = require('lodash'); 
+var md5 = require('md5'); 
 
 var PORT = 4000; 
 
@@ -120,10 +119,14 @@ var server = http.createServer(function(req, res){
       res.write('Spaces: '+object.spaces+'\n');
       res.write('Letters: '+object.letters+'\n');
       res.end();
-
-
-
       break; 
+
+    case 'gravatar':
+      var hash = md5(urlParts[1]); 
+      var gravatarurl = 'www.gravatar.com/avatar/' + hash; 
+      var html = "<img src='"+ gravatarurl +"'></img>"; 
+      res.write(html); 
+    
     default: 
     res.end('nothing');
   }
@@ -132,5 +135,3 @@ var server = http.createServer(function(req, res){
 server.listen(PORT, function(){       
   console.log("Server now listening on port " + PORT + "! ;)")
 });
-
-console.log('end of file'); 
