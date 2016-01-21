@@ -71,6 +71,20 @@ var server = http.createServer(function(req, res){
           }
           break; 
 
+        case 'root':
+          if (urlParts.length === 3) {
+            var squareroot = Math.sqrt( parseInt(urlParts[2]) );
+            res.end(squareroot + '\n'); 
+          } else {
+            var numbers = [];
+            for (var i = 2; i < urlParts.length; i++) {
+              numbers.push( Math.sqrt( parseInt(urlParts[i]) ) );
+            };
+            var roots = numbers.join(' ');
+            res.end(roots + '\n');
+          }
+          break;           
+
         default: 
           if (urlParts[3]) {
             var mod = parseInt(urlParts[2]) % parseInt(urlParts[3]);

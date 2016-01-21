@@ -27,8 +27,4 @@ module.exports = {
       return entry*entry; 
     });
   }
-  // , 
-  // root: function squareroot(x){
-
-  // }
 };
