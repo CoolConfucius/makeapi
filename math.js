@@ -11,7 +11,7 @@ module.exports = {
     });
   } , 
   multiply: function product(x){
-    return x.reduce(function(){
+    return x.reduce(function(acc, curr){
       return acc * curr; 
     }, 1);
   }, 
@@ -22,9 +22,13 @@ module.exports = {
     })
   }, 
   square: function secondpower(x){
-    if (typeof x === number) { return x*x; };
+    if (typeof x === 'number') { return x*x; };
     return x.map(function(entry){
       return x*x; 
     });
   }
+  // , 
+  // root: function squareroot(x){
+
+  // }
 };

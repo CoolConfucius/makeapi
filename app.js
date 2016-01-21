@@ -57,12 +57,31 @@ var server = http.createServer(function(req, res){
           res.end(quotient + '\n'); 
           break; 
 
-        // case 'square': 
-        //   if (urlParts.length === ) {};
-        //   var secondpower = 
+        case 'square': 
+          if (urlParts.length === 3) {
+            var squared = math.square( parseInt(urlParts[2]) );
+            res.end(squared + '\n'); 
+          } else {
+            var numbers = urlParts.slice(2, urlParts.length);
+            for (var i = 2; i < urlParts.length; i++) {
+              numbers.push( parseInt(urlParts[i]) );
+            };
+            var squares = math.square(numbers).join(' ');
+            res.end(squares + '\n');
+          }
+          break; 
 
         default: 
-          res.end('nothng'); 
+          if (urlParts[3]) {
+            var mod = parseInt(urlParts[2]) % parseInt(urlParts[3]);
+            res.end(mod + '\n'); 
+          } else {
+            if (urlParts[2]) {
+              res.end(urlParts[2] + '\n');
+            } else {
+              res.end('No math'); 
+            }
+          }
 
       }
       break; 
