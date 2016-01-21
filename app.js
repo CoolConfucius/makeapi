@@ -62,7 +62,7 @@ var server = http.createServer(function(req, res){
             var squared = math.square( parseInt(urlParts[2]) );
             res.end(squared + '\n'); 
           } else {
-            var numbers = urlParts.slice(2, urlParts.length);
+            var numbers = [];
             for (var i = 2; i < urlParts.length; i++) {
               numbers.push( parseInt(urlParts[i]) );
             };

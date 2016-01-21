@@ -24,7 +24,7 @@ module.exports = {
   square: function secondpower(x){
     if (typeof x === 'number') { return x*x; };
     return x.map(function(entry){
-      return x*x; 
+      return entry*entry; 
     });
   }
   // , 
