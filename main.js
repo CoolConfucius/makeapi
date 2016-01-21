@@ -10,6 +10,7 @@ var main = {
     $('#getUrl').click(main.getUrl);
     $('#getMath').click(main.getMath);
     $('#getAdd').click(main.getAdd);
+    $('#exSquare').click(main.exSquare);
   },
   getTime: function(){
     $.get('http://localhost:'+port+'/time', function(data){
@@ -39,6 +40,11 @@ var main = {
     main.slash(); 
     $.get('http://localhost:'+port+ main.url , function(data){
       console.log(data);
+      console.log('url',main.url);
+      console.log('url array',main.url.match(/[^/]+/g)[0]);
+      if (main.url.match(/[^/]+/g)[0] === 'gravatar') { 
+        $('#image').attr('src', 'http://'+data);
+      };
       $('#resUrl').text(data); 
     })
   }, 
@@ -60,6 +66,11 @@ var main = {
     sentence: '/sentence/A%20Sentence%20here',
     gravatar: '/gravatar/samer.buna@gmail.com'
   }
+  // , 
+
+  // exSquare: function(){
+  //   $('#url')
+  // }
 
 
 };
