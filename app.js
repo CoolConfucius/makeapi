@@ -71,6 +71,20 @@ var server = http.createServer(function(req, res){
           }
           break; 
 
+        case 'cube': 
+          if (urlParts.length === 3) {
+            var cubed = math.cube( parseInt(urlParts[2]) );
+            res.end(cubed + '\n'); 
+          } else {
+            var numbers = [];
+            for (var i = 2; i < urlParts.length; i++) {
+              numbers.push( parseInt(urlParts[i]) );
+            };
+            var cubes = math.cube(numbers).join(' ');
+            res.end(cubes + '\n');
+          }
+          break; 
+
         case 'root':
           if (urlParts.length === 3) {
             var squareroot = Math.sqrt( parseInt(urlParts[2]) );

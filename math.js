@@ -26,5 +26,11 @@ module.exports = {
     return x.map(function(entry){
       return entry*entry; 
     });
+  }, 
+  cube: function thirdpower(x){
+    if (typeof x === 'number') { return x*x*x; };
+    return x.map(function(entry){
+      return entry*entry*entry; 
+    });
   }
 };
