@@ -2,7 +2,7 @@
 
 var http = require('http');  
 var math = require('./math'); 
-// var sentence = require('./sentence');
+var sentence = require('./sentence');
 // var md5 = require('md5'); 
 // var _ = require('lodash'); 
 
@@ -112,7 +112,14 @@ var server = http.createServer(function(req, res){
           }
 
       } // end of math start of sentence 
-    // case 'sentence': 
+    case 'sentence': 
+      var decoded = decodeURI(urlParts[1]); 
+      var object = sentence(decoded); 
+      res.write(decoded + '\n');
+      res.write('Words: '+object.words+'\n');
+      res.write('Spaces: '+object.spaces+'\n');
+      res.write('Letters: '+object.letters+'\n');
+      res.end();
 
 
 
