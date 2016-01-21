@@ -8,6 +8,13 @@ var md5 = require('md5');
 var PORT = 4000; 
 
 var server = http.createServer(function(req, res){
+
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Request-Method', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  
   console.log('url:', req.url); 
 
   var urlParts = req.url.match(/[^/]+/g); 
@@ -124,8 +131,9 @@ var server = http.createServer(function(req, res){
     case 'gravatar':
       var hash = md5(urlParts[1]); 
       var gravatarurl = 'www.gravatar.com/avatar/' + hash; 
-      var html = "<img src='"+ gravatarurl +"'></img>"; 
-      res.write(html); 
+      // var html = "<img src='"+ gravatarurl +"'></img>"; 
+      // res.write(html); 
+      res.end(gravatarurl);
     
     default: 
     res.end('nothing');
